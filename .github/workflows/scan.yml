@@ -1,0 +1,28 @@
+name: Stock Scanner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      
+      - name: Install yfinance
+        run: pip install yfinance
+      
+      - name: Run stock scanner
+        run: python scan.py
+      
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: stock-prices
+          path: prices.json
