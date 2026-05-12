@@ -9,20 +9,19 @@ stocks = ['SPY', 'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'TSLA', 'AMZN', 'META']
 all_data = []
 
 for stock in stocks:
-    try:
-        print(f"Getting {stock}...")
-        ticker = yf.Ticker(stock)
-        info = ticker.info
-        price = info.get('regularMarketPrice', 0)
-        if price > 0:
-            all_data.append({
-                'symbol': stock,
-                'price': round(price, 2),
-                'time': str(datetime.now())
-            })
-            print(f"  ${round(price, 2)}")
-    except:
-        print(f"  Error with {stock}")
+    print(f"Getting {stock}...")
+    ticker = yf.Ticker(stock)
+    info = ticker.info
+    price = info.get('regularMarketPrice', 0)
+    if price > 0:
+        all_data.append({
+            'symbol': stock,
+            'price': round(price, 2),
+            'time': str(datetime.now())
+        })
+        print(f"  ${round(price, 2)}")
+    else:
+        print(f"  No price data")
 
 with open('prices.json', 'w') as f:
     json.dump(all_data, f, indent=2)
