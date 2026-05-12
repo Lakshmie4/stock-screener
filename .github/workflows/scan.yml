@@ -24,5 +24,7 @@ jobs:
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
-          name: stock-prices
-          path: prices.json
+          name: stock-analysis
+          path: |
+            analysis.json
+            report.txt
