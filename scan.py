@@ -60,9 +60,11 @@ for stock in stocks:
     except Exception as e:
         print(f"  ❌ Error: {e}")
 
+# Save JSON file
 with open('analysis.json', 'w') as f:
     json.dump(results, f, indent=2)
 
+# Save text report
 with open('report.txt', 'w') as f:
     f.write("=" * 60 + "\n")
     f.write("STOCK SCREENER REPORT\n")
