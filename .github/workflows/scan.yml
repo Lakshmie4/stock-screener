@@ -21,10 +21,10 @@ jobs:
       - name: Run stock scanner
         run: python scan.py
       
-      - name: Upload results
-        uses: actions/upload-artifact@v4
-        with:
-          name: stock-analysis
-          path: |
-            analysis.json
-            report.txt
+      - name: Upload results           ← ADD THIS
+        uses: actions/upload-artifact@v4  ← ADD THIS
+        with:                             ← ADD THIS
+          name: stock-analysis            ← ADD THIS
+          path: |                         ← ADD THIS
+            analysis.json                 ← ADD THIS
+            report.txt                    ← ADD THIS
