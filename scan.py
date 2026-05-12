@@ -21,7 +21,7 @@ for stock in stocks:
         })
         print(f"  ${round(price, 2)}")
     else:
-        print(f"  No price data")
+        print(f"  No price data for {stock}")
 
 with open('prices.json', 'w') as f:
     json.dump(all_data, f, indent=2)
