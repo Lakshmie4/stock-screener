@@ -2,7 +2,7 @@ import yfinance as yf
 import json
 from datetime import datetime
 
-print("STOCK SCREENER STARTED")
+print("STOCK SCANNER STARTED")
 print("-" * 40)
 
 stocks = ['SPY', 'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'TSLA', 'AMZN', 'META']
@@ -14,7 +14,6 @@ for stock in stocks:
         ticker = yf.Ticker(stock)
         info = ticker.info
         price = info.get('regularMarketPrice', 0)
-        
         if price > 0:
             all_data.append({
                 'symbol': stock,
@@ -25,11 +24,9 @@ for stock in stocks:
     except:
         print(f"  Error with {stock}")
 
-# Save results
 with open('prices.json', 'w') as f:
     json.dump(all_data, f, indent=2)
 
-# Create readable report
 with open('report.txt', 'w') as f:
     f.write("STOCK PRICES\n")
     f.write("=" * 30 + "\n")
